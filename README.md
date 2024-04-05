@@ -1,7 +1,7 @@
 ## Bioproj2Lineage
 
 This directory contains two workflows for profiling Mtb lineages using TB Profiler from publicly available sequences hosted on NCBI. 
-* [TB Profiler] (https://github.com/jodyphelan/TBProfiler)
+* [TB Profiler](https://github.com/jodyphelan/TBProfiler)
 
 ## Installation
 ### Conda environments
