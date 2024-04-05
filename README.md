@@ -34,8 +34,21 @@ ll batchedtsvs/* | wc -l
 ```
 
 #### Step 2: For a given BioProject and batch number, use sm_Accs2Runaccs to retrieve run accessions from SRA accessions
+In your directory of choice, prepare the following folders 
 ```bash
-mkdir -p ../PRJNA736718/batch23
-cd ../PRJNA736718/batch23
-cp ../../dirTemplate/slurm*Runacc* .
+cd /path/to/your/directory/
+mkdir -p PRJNA736718/batch23
+cd PRJNA736718/batch23
+cp /path/to/cloned/repo/Bioproj2Lineage/slurm*Runacc* .
+```
+
+Modify SBATCH directives and options in slurm_Accs2Runaccs.sh
+
+```bash
+nano slurm_Accs2Runaccs.sh
+```
+
+Launch snakemake workflow
+```bash
+sbatch slurm_Accs2Runaccs.sh
 ```
