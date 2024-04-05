@@ -33,7 +33,7 @@ Inspect the series of smaller tsv files, there should be 23 in total.
 ll batchedtsvs/* | wc -l 
 ```
 
-#### Step 2: For a given BioProject and batch number, use sm_Accs2Runaccs to retrieve run accessions from SRA accessions
+#### Step 2: For a given BioProject and batch number, prepare the following directory structure
 In your directory of choice, prepare the following folders 
 ```bash
 cd /path/to/your/directory/
@@ -42,6 +42,7 @@ cd PRJNA736718/batch23
 cp /path/to/cloned/repo/Bioproj2Lineage/slurm*Runacc* .
 ```
 
+#### Step 3: Use sm_Accs2Runaccs to retrieve run accessions from SRA accessions
 Modify SBATCH directives and options in slurm_Accs2Runaccs.sh
 
 ```bash
@@ -51,4 +52,28 @@ nano slurm_Accs2Runaccs.sh
 Launch snakemake workflow
 ```bash
 sbatch slurm_Accs2Runaccs.sh
+```
+
+Check that all accessions have been processed by running the following command.
+This should return the same number of lines in the input file: 
+in this example, this is /path/to/cloned/repo/Bioproj2Lineage/batchedtsvs/PRJNA736718_batch23_sras.tsv
+
+```bash
+wc -l sm_Accs2Runaccs/json_summarise/js_summarise_dummy.tsv
+wc -l /path/to/cloned/repo/Bioproj2Lineage/batchedtsvs/PRJNA736718_batch23_sras.tsv
+```
+
+If not all jobs have finished running with the initial sbatch command, repeat it. 
+
+#### Step 4: Use sm_Accs2Runaccs to retrieve run accessions from SRA accessions
+
+Modify SBATCH directives and options in slurm_Runacc2Fasta.sh
+
+```bash
+nano slurm_Runacc2Fasta.sh
+```
+
+Launch snakemake workflow
+```bash
+sbatch slurm_Runacc2Fasta.sh
 ```
