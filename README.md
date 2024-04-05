@@ -77,3 +77,14 @@ Launch snakemake workflow
 ```bash
 sbatch slurm_Runacc2Fasta.sh
 ```
+
+Check that all accessions have been processed by running the following command.
+
+```bash
+wc -l sm_Runacc2Fasta/fasta_summary/fasta_summary_dummy.tsv 
+wc -l sm_Accs2Runaccs/json_summarise/js_summarise_dummy.tsv 
+```
+
+If not all jobs have finished running with the initial sbatch command, repeat it. 
+
+#### Step 5: To process other batches, repeat steps 2-4 
