@@ -11,33 +11,31 @@ conda create --name snakemake --file ./myenvs/spec-file-snakemake.txt
 conda create --name tbprofiler --file ./myenvs/spec-file-tbprofiler.txt
 ```
 
-# Setting up TB-Profiler
+### Setting up TB-Profiler
 ```bash
 conda activate tbprofiler
 tb-profiler update_tbdb --match_ref ./reference/NC_000962_3.fa
 ```
-
-# Given 'PRJNA736718_sras.tsv'
-# Which contains 2236 accessions
-# We process this into batches of 100
-# modify slurm_all.sh to specify options
-sbatch slurm_all.sh 
-
 ## Usage
 ### Reproducible example
 
 #### Step 1: Batching
-The following slurm submission script was designed for PRJNA736718_sras.tsv
+The following slurm submission script was designed for ./data/PRJNA736718_sras.tsv
 Run just once to batch this initial tsv file into a series of smaller tsv files
+
 ```bash
-sbatch slurm_all.sh
+sbatch slurm_batching.sh
 ```
 
-# Inspect the series of smaller tsv files, there should be 23 in total.
+Inspect the series of smaller tsv files, there should be 23 in total.
+
 ```bash
 ll batchedtsvs/* | wc -l 
 ```
-# Step 2: For a given batch of a certain BioProject, use sm_Accs2Runaccs to retrieve run accessions from SRA accessions
-mkdir -p ../PRJNA736718/batch22
-cd ../PRJNA736718/batch22
+
+#### Step 2: For a given BioProject and batch number, use sm_Accs2Runaccs to retrieve run accessions from SRA accessions
+```bash
+mkdir -p ../PRJNA736718/batch23
+cd ../PRJNA736718/batch23
 cp ../../dirTemplate/slurm*Runacc* .
+```
