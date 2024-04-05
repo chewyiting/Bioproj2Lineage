@@ -1,0 +1,97 @@
+import pandas as pd
+#configfile: "config/config.yaml"
+
+RUN_ACCS=pd.read_table(config["alljson"],header=0,dtype=str)['run_accession']
+LINKS1=pd.read_table(config["alljson"],header=0,dtype=str)['fastq_ftp_1']
+LINKS2=pd.read_table(config["alljson"],header=0,dtype=str)['fastq_ftp_2']
+mybasedir=config["basedir"]
+myreffasta=config["reference"]
+myinputTSV=config["alljson"]
+myoutput='fasta_summary_dummy.tsv'
+dirscript=config["dirscript"]
+nthreads=config["nthreads"]
+
+rule all:
+    input:
+        expand("raw_reads/{run_acc}_1.fastq.gz",run_acc=RUN_ACCS),
+        expand("raw_reads/{run_acc}_2.fastq.gz",run_acc=RUN_ACCS),
+        expand("sorted_reads/{run_acc}.bam.bai",run_acc=RUN_ACCS),
+        expand("results/{run_acc}.results.json",run_acc=RUN_ACCS),
+        expand("plots/{run_acc}.lineages.txt",run_acc=RUN_ACCS),
+        "fasta_summary/{config[myoutput]}"
+
+rule get_fastq:
+    params:
+        basedir=mybasedir
+    output:
+        "raw_reads/{run_acc}_1.fastq.gz",
+        "raw_reads/{run_acc}_2.fastq.gz"
+    shell:
+        """
+        {config[dirscript]}fastq_fetch.sh -a {wildcards.run_acc} -b {config[alljson]} -c {params.basedir}raw_reads
+        """
+
+rule bwa_map:
+    params:
+        nthreads=nthreads
+    input:
+        myreffasta,
+        "raw_reads/{run_acc}_1.fastq.gz",
+        "raw_reads/{run_acc}_2.fastq.gz"
+    output:
+        "mapped_reads/{run_acc}.bam"
+    shell:
+        "bwa mem -t {params.nthreads} {input} | samtools view -Sb > {output} 2> /dev/null"
+
+rule samtools_sort:
+    input:
+        "mapped_reads/{run_acc}.bam"
+    output:
+        "sorted_reads/{run_acc}.bam"
+    shell:
+        "samtools sort -@ 4 {input} > {output}"
+
+rule samtools_index:
+    input:
+        "sorted_reads/{run_acc}.bam"
+    output:
+        "sorted_reads/{run_acc}.bam.bai"
+    shell:
+        "samtools index {input}"
+
+rule lineage_call:
+    input:
+        "sorted_reads/{run_acc}.bam"
+    output:
+        "results/{run_acc}.results.json"
+    shell:
+        """
+        module purge
+        module load miniconda/23.5.2
+        conda activate tbprofiler
+        tb-profiler lineage --bam {input} --prefix {wildcards.run_acc}
+        """
+
+rule lineage_summarise:
+    input:
+        "results/{run_acc}.results.json"
+    output:
+        "plots/{run_acc}.lineages.txt"
+    shell:
+        "jq '.main_lin,.sublin' {input} > {output}"
+
+rule fasta_summarise:
+    input:
+        expand("plots/{run_acc}.lineages.txt",run_acc=RUN_ACCS)
+    params:
+        basedir=mybasedir,
+        inputdir='plots',
+        inputTSV=myinputTSV,
+        outputdir='fasta_summary'
+    output:
+        'fasta_summary/{config[myoutput]}'
+    shell:
+        """
+        Rscript {config[dirscript]}summarise_lineage.R {params.basedir}{params.inputdir} {params.inputTSV} {params.basedir}{params.outputdir} {config[myoutput]}
+        """
+    
