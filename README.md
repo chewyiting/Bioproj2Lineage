@@ -21,10 +21,11 @@ tb-profiler update_tbdb --match_ref ./reference/NC_000962_3.fa
 
 ## Usage
 ### Reproducible example
+To illustrate, we will analyse the list of SRA accessions corresponding to BioProject PRJNA736718.
 
 #### Step 1: Batching
 The following slurm submission script was designed for ./data/PRJNA736718_sras.tsv
-Run just once to batch this initial tsv file into a series of smaller tsv files
+Run just once to batch this initial tsv file into a series of smaller tsv files, each with the header 'SRA' followed by 100 SRA accessions.
 
 ```bash
 sbatch slurm_batching.sh
@@ -91,3 +92,5 @@ wc -l sm_Accs2Runaccs/json_summarise/js_summarise_dummy.tsv
 If not all jobs have finished running with the initial sbatch command, repeat it. 
 
 #### Step 5: To process other batches, repeat steps 2-4 
+
+Modify slurm_batching.sh to modify batch size and input list of SRA accessions.
