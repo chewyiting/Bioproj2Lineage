@@ -1,21 +1,24 @@
 ## Bioproj2Lineage
-
-This directory contains two workflows for profiling Mtb lineages using TB Profiler from publicly available sequences hosted on NCBI. 
+This directory contains two sequential Snakemake workflows for performing lineage calling on Mtb genomes (TB Profiler) from publicly available sequences hosted on NCBI. 
 * [TB Profiler](https://github.com/jodyphelan/TBProfiler)
+* [NCBI Bioproject](https://www.ncbi.nlm.nih.gov)
 
 ## Installation
 ### Conda environments
 ```bash
-conda create --name bioinfo --file ./myenvs/spec-file-bioinfo.txt
 conda create --name snakemake --file ./myenvs/spec-file-snakemake.txt
 conda create --name tbprofiler --file ./myenvs/spec-file-tbprofiler.txt
+conda create --name bioinfo --file ./myenvs/spec-file-bioinfo.txt
 ```
 
 ### Setting up TB-Profiler
+Setting up TB-Profiler to process existing .bam files, by specifying our reference genome to which our raw reads will be aligned to. 
+
 ```bash
 conda activate tbprofiler
 tb-profiler update_tbdb --match_ref ./reference/NC_000962_3.fa
 ```
+
 ## Usage
 ### Reproducible example
 
