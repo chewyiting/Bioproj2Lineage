@@ -19,6 +19,7 @@ outputfilelist='biosample-accs-full.list'
 # command
 for acc in `cat $inputfile`; do \
 esearch -db bioproject -query $acc | elink -target biosample | efetch -format docsum | xtract -pattern BioSample \
+-block Accession -element Accession \
 -SRA "(NA)" \
 -block Id -if Id@db -equals "SRA" -SRA Id \
 -block Ids -first Id -element "&SRA" \
