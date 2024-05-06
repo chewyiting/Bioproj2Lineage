@@ -24,16 +24,22 @@ tb-profiler update_tbdb --match_ref ./reference/NC_000962_3.fa
 ## Usage
 ### Identifying a list of SRA accessions
 #### Step 1: Fetch a list of Bioproject accession IDs for a given query
-scripts/metadata2profile.R for proceeding from a query on [NCBI Bioproject](https://www.ncbi.nlm.nih.gov) to a list of Bioproject accessions
-data/q03_bioproject_result.xml for list of Bioproject accessions 
+```bash
+scripts/metadata2profile.R # for proceeding from a query on [NCBI Bioproject](https://www.ncbi.nlm.nih.gov) to a list of Bioproject accessions
+data/q03_bioproject_result.xml # for list of Bioproject accessions 
+```
 
 #### Step 2: Fetch a list of SRA accession IDs for every Bioproject accession ID, and relevant metadata
-scripts/slurm_bioproject2biosample-list.sh for proceeding from list of Bioproject accessions to SRA accessions and metadata 
-scripts/bioproj2biosampleMeta.R for compiling output from script above into data/alltab_full_240331.tsv 
+```bash
+scripts/slurm_bioproject2biosample-list.sh # for proceeding from list of Bioproject accessions to SRA accessions and metadata 
+scripts/bioproj2biosampleMeta.R # for compiling output from script above into data/alltab_full_240331.tsv 
+```
 
 #### Step 3: Fetch SRA accession IDs for every run accession ID
-data/allSamplesENA_runaccs.list contains a list of run accession IDs
-scripts/slurm_sra2run_array.sh for matching run accession ID to SRA accession ID
+```bash
+data/allSamplesENA_runaccs.list # contains a list of run accession IDs
+scripts/slurm_sra2run_array.sh # for proceeding from list of run accession IDs to SRA accession IDs
+```
 
 ### Reproducible example
 To illustrate, we will analyse the list of SRA accessions corresponding to BioProject PRJNA736718.
