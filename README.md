@@ -23,19 +23,15 @@ tb-profiler update_tbdb --match_ref ./reference/NC_000962_3.fa
 
 ## Usage
 ### Identifying a list of SRA accessions
-#### Step 1: Fetch a list of Bioproject accession IDs for a given query on [NCBI Bioproject](https://www.ncbi.nlm.nih.gov)
+#### Option 1: Proceed from a query on [NCBI Bioproject](https://www.ncbi.nlm.nih.gov) to a list of Bioproject accession IDs, then their corresponding SRA accessions
 ```bash
 scripts/metadata2profile.R # for proceeding from a query on NCBI Bioproject to a list of Bioproject accessions
-data/q03_bioproject_result.xml # for list of Bioproject accessions 
-```
-
-#### Step 2: Fetch a list of SRA accession IDs for every Bioproject accession ID, and relevant metadata
-```bash
-scripts/slurm_bioproject2biosample-list.sh # for proceeding from list of Bioproject accessions to SRA accessions and metadata 
+data/q03_bioproject_result.xml # for list of Bioproject accessions
+scripts/slurm_bioproject2biosample-list.sh # for proceeding from list of Bioproject accessions to SRA accessions and metadata
 scripts/bioproj2biosampleMeta.R # for compiling output from script above into data/alltab_full_240331.tsv 
 ```
 
-#### Step 3: Fetch SRA accession IDs for every run accession ID
+#### Option 2: Proceed from a list of run accession IDs to their corresponding SRA accessions
 ```bash
 data/allSamplesENA_runaccs.list # contains a list of run accession IDs
 scripts/slurm_sra2run_array.sh # for proceeding from list of run accession IDs to SRA accession IDs
