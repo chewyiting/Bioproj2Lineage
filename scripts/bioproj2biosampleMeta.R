@@ -17,7 +17,7 @@ mylist=args[3] # ./data/tabs/biosample-accs-full.list
 metadatafiles <- read_delim(file=mylist,delim='\n',col_names=F)
 metadatafiles <- metadatafiles$X1
 print(length(metadatafiles))
-df_colnames <- c("BioProject","SRA","OrganismName","collection_date","geo_loc_name","seq_methods","host","host_body_product")
+df_colnames <- c("BioProject","BioSample","SRA","OrganismName","collection_date","geo_loc_name","seq_methods","host","host_body_product")
 mycolNum <- length(df_colnames) - 1
 
 ##########################################
