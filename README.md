@@ -1,6 +1,5 @@
 ## Bioproj2Lineage
 This directory contains two sequential Snakemake workflows for performing lineage calling on Mtb genomes (TB Profiler) from publicly available sequences hosted on NCBI. 
-* [NCBI Bioproject](https://www.ncbi.nlm.nih.gov)
 
 ## Installation
 ### Conda environments
@@ -23,6 +22,9 @@ tb-profiler update_tbdb --match_ref ./reference/NC_000962_3.fa
 ```
 
 ## Usage
+### Identifying a list of SRA accessions
+Refer to scripts/metadata2profile.R for proceeding from a query on [NCBI Bioproject](https://www.ncbi.nlm.nih.gov) to a list of SRA accessions.
+
 ### Reproducible example
 To illustrate, we will analyse the list of SRA accessions corresponding to BioProject PRJNA736718.
 
