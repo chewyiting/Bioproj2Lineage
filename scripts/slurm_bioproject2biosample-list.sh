@@ -12,8 +12,12 @@
 module load EDirect
 mkdir -p data/tabs
 
+# project-specific options
+inputfile='bioproject-id-q03.list'
+outputfilelist='biosample-accs-full.list'
+
 # command
-for acc in `cat bioproject-id-q03.list`; do \
+for acc in `cat $inputfile`; do \
 esearch -db bioproject -query $acc | elink -target biosample | efetch -format docsum | xtract -pattern BioSample \
 -SRA "(NA)" \
 -block Id -if Id@db -equals "SRA" -SRA Id \
@@ -35,3 +39,5 @@ esearch -db bioproject -query $acc | elink -target biosample | efetch -format do
 -HOSTBODYPRODUCT "(NA)" \
 -block Attribute -if Attribute@harmonized_name -equals "isolation_source" -HOSTBODYPRODUCT Attribute \
 -block Attributes -element "&HOSTBODYPRODUCT" \ > ./data/tabs/biosample-$acc-full.tab; done
+
+ls tabs/biosample*full.tab > tabs/$outputfilelist
