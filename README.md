@@ -23,9 +23,9 @@ tb-profiler update_tbdb --match_ref ./reference/NC_000962_3.fa
 
 ## Usage
 ### Identifying a list of SRA accessions
-#### Step 1: Fetch a list of Bioproject accession IDs for a given query
+#### Step 1: Fetch a list of Bioproject accession IDs for a given query on [NCBI Bioproject](https://www.ncbi.nlm.nih.gov)
 ```bash
-scripts/metadata2profile.R # for proceeding from a query on [NCBI Bioproject](https://www.ncbi.nlm.nih.gov) to a list of Bioproject accessions
+scripts/metadata2profile.R # for proceeding from a query on NCBI Bioproject to a list of Bioproject accessions
 data/q03_bioproject_result.xml # for list of Bioproject accessions 
 ```
 
