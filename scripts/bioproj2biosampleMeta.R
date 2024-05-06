@@ -10,18 +10,18 @@ library(stringr)
 args <- commandArgs(trailingOnly = TRUE)
 print(paste0(c('Printing my ',length(args),' arguments'),collapse=""))
 print(args)
-indir= args[1] # /home/yc954/project.cohen/get_bioproj/meta_bioproj2biosample/test
-outputname=args[2] #alltab_full_240331.tsv
+indir= args[1] # ./data/tabs
+outputname=args[2] # ./data/tabs/alltab_full_240331.tsv
 setwd(indir)
-mylist=args[3] #
-#metadatafiles<-list.files(pattern='*sample.tab')
+mylist=args[3] # ./data/tabs/biosample-accs-full.list
 metadatafiles <- read_delim(file=mylist,delim='\n',col_names=F)
 metadatafiles <- metadatafiles$X1
 print(length(metadatafiles))
-df_colnames <- c("BioProject","BioSample","SRA","OrganismName","collection_date","geo_loc_name","seq_methods","host","host_body_product")
+df_colnames <- c("BioProject","SRA","OrganismName","collection_date","geo_loc_name","seq_methods","host","host_body_product")
 mycolNum <- length(df_colnames) - 1
+
 ##########################################
-# Project-specific options
+# Actual script
 ##########################################
 
 df_out <- data.frame(matrix(data=NA,nrow=1,ncol=length(df_colnames)))
