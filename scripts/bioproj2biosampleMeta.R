@@ -11,7 +11,7 @@ args <- commandArgs(trailingOnly = TRUE)
 print(paste0(c('Printing my ',length(args),' arguments'),collapse=""))
 print(args)
 indir= args[1] # ./data/tabs
-outputname=args[2] # ./data/tabs/alltab_full_240331.tsv
+outputname=args[2] # ./data/alltab_full_240331.tsv
 setwd(indir)
 mylist=args[3] # ./data/tabs/biosample-accs-full.list
 metadatafiles <- read_delim(file=mylist,delim='\n',col_names=F)
