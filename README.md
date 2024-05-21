@@ -28,7 +28,7 @@ tb-profiler update_tbdb --match_ref ./reference/NC_000962_3.fa
 scripts/metadata2profile.R # for proceeding from a query on NCBI Bioproject to a list of Bioproject accessions
 data/q03_bioproject_result.xml # for list of Bioproject accessions
 scripts/slurm_bioproject2biosample-list.sh # for proceeding from list of Bioproject accessions to SRA accessions and metadata
-scripts/bioproj2biosampleMeta.R # for compiling output from script above into data/alltab_full_240331.tsv 
+scripts/bioproj2biosampleMeta.R # for compiling output from script above into data/alltab_full_240401.tsv 
 ```
 
 #### Option 2: Proceed from a list of run accession IDs to their corresponding SRA accessions
