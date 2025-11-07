@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task 1
 #SBATCH --mem-per-cpu=5120
 #SBATCH --time=4:00:00
-#SBATCH --account=cohen_theodore
+#SBATCH --account=XXXXXXX
 
 module load EDirect/20.4.20230912-GCCcore-10.2.0
 # replace bioproject-id-dummy.list with any text files, new lines = bioproject accession

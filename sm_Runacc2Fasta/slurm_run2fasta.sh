@@ -7,7 +7,7 @@
 #SBATCH --time=0:30:00
 #SBATCH --output=run2fasta_%A.out
 #SBATCH --error=run2fasta_%A.err
-#SBATCH --account=cohen_theodore
+#SBATCH --account=XXXXXX
 
 # options
 mybasedir='/home/yc954/project.cohen/sm_Runacc2Fasta/'
