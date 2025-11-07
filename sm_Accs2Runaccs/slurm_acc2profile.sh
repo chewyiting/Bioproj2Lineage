@@ -7,7 +7,7 @@
 #SBATCH --time=0:10:00
 #SBATCH --output=acc2prof_%A.out
 #SBATCH --error=acc2prof_%A.err
-#SBATCH --account=cohen_theodore
+#SBATCH --account=XXXXX
 
 # options
 mybasedir='/home/yc954/project.cohen/sm_Bioproj2Lineage/PRJNA736718/batch01/'
