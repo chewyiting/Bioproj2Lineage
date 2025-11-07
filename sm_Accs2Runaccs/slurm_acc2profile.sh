@@ -10,7 +10,7 @@
 #SBATCH --account=XXXXX
 
 # options
-mybasedir='/home/yc954/project.cohen/sm_Bioproj2Lineage/PRJNA736718/batch01/'
+mybasedir='/path/to/sm_Bioproj2Lineage/PRJNA736718/batch01/'
 myinputdir='sample_info'
 myoutputdir='json_summarise'
 myoutputname='js_summarise_dummy.tsv'

@@ -12,15 +12,14 @@
 ###########################
 # options
 ###########################
-dirtemplate='/home/yc954/project.cohen/sm_Bioproj2Lineage/dirTemplate/'
+dirtemplate='/path/to/sm_Bioproj2Lineage/dirTemplate/'
 bioproj='PRJNA736718'
 batchno=23
 
 # config parameters for Snakefile (sm_Runacc2Fasta)
-#alljson='/home/yc954/project.cohen/sm_Bioproj2Lineage/PRJNA736718/batch23/sm_Accs2Runaccs/json_summarise/js_summarise_dummy.tsv'
-alljson=$(echo '/home/yc954/project.cohen/sm_Bioproj2Lineage/'${bioproj}'/batch'${batchno}'/sm_Accs2Runaccs/json_summarise/js_summarise_dummy.tsv')
-reference='/home/yc954/project.cohen/sm_Bioproj2Lineage/dirTemplate/reference/NC_000962_3.fa'
-dirscript='/home/yc954/project.cohen/sm_Bioproj2Lineage/dirTemplate/scripts/'
+alljson=$(echo '/path/to/sm_Bioproj2Lineage/'${bioproj}'/batch'${batchno}'/sm_Accs2Runaccs/json_summarise/js_summarise_dummy.tsv')
+reference='/path/to/sm_Bioproj2Lineage/dirTemplate/reference/NC_000962_3.fa'
+dirscript='/path/to/sm_Bioproj2Lineage/dirTemplate/scripts/'
 nthreads=$SLURM_NTASKS_PER_NODE
 
 # other parameters

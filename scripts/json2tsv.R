@@ -14,7 +14,7 @@ setwd(args[1])
 print("Echoing current working directory")
 getwd()
 outputname <- args[2] 
-outputdir <- args[3] # /home/yc954/project.cohen/sm_Accs2Lineages/json_summarise
+outputdir <- args[3] # 
 ####################################
 # Data and directories
 ####################################

@@ -37,7 +37,7 @@ pwd
 ##############################
 # Script begins here
 ##############################
-# inputtsv='/home/yc954/project.cohen/sm_Bioproj2Lineage/PRJNA736718/PRJNA736718_sras.tsv'
+# inputtsv='/path/to/sm_Bioproj2Lineage/PRJNA736718/PRJNA736718_sras.tsv'
 # myname='PRJNA736718'
 # batchsize='100'
 

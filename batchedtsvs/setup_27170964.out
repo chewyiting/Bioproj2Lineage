@@ -1,5 +1,5 @@
 Parameters used are:
-/home/yc954/project.cohen/sm_Bioproj2Lineage/PRJNA736718/PRJNA736718_sras.tsv
+/path/to/sm_Bioproj2Lineage/PRJNA736718/PRJNA736718_sras.tsv
 PRJNA736718
 100
-/home/yc954/project.cohen/sm_Bioproj2Lineage/dirTemplate/batchedtsvs/batchedtsvs
+/path/to/sm_Bioproj2Lineage/dirTemplate/batchedtsvs/batchedtsvs

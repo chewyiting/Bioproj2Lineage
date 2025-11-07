@@ -10,8 +10,8 @@
 #SBATCH --account=XXXXXX
 
 # options
-mybasedir='/home/yc954/project.cohen/sm_Runacc2Fasta/'
-inputTSV='/home/yc954/project.cohen/sm_Accs2Runaccs/json_summarise/js_summarise_dummy.tsv'
+mybasedir='/path/to/sm_Runacc2Fasta/'
+inputTSV='/path/to/sm_Accs2Runaccs/json_summarise/js_summarise_dummy.tsv'
 outputdir='fasta_summary'
 myoutput='fasta_summary_dummy.tsv'
 
